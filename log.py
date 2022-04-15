@@ -17,7 +17,7 @@ class Log:
     Provides an interface to the log files.
     """
 
-    def __init__(self, path):
+    def __init__(self, path: str) -> None:
         """
         Initialize the log directory.
         """
@@ -31,17 +31,17 @@ class Log:
 
         self.path = path
 
-    def write(self, level: Level, message: str):
+    def write(self, level: Level, message: str) -> None:
         """
         Write a new entry to the log.
         """
+        # Remove line breaks, so that every line written is an entry.
         message = ''.join(message.splitlines())
         if len(message) == 0:
             return
 
         path = str(datetime.date.today()) + '.log'
         path = os.path.join(self.path, path)
-
-        with open(path, 'a') as f:
+        with open(path, 'a', encoding='utf-8') as f:
             f.write(str(datetime.datetime.now()) +
                     ': ' + str(level) + ' ' + message + '\n')
