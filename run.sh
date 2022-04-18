@@ -1,6 +1,7 @@
 #!/bin/bash
 SCRIPT_PATH="`dirname $0`"
 CONFIG_FILE="$SCRIPT_PATH/config.sh"
+SCRIPT_FILE="$SCRIPT_PATH/main.py"
 
 # Source the config file.
 if [[ -f $CONFIG_FILE ]]
@@ -15,7 +16,7 @@ fi
 source $VIRTUALENV
 
 # Run the program.
-python main.py \
+python $SCRIPT_FILE \
     -c $COMPLETED \
     -m $MOVIES \
     -s $SERIES \
