@@ -1,7 +1,7 @@
 from cache.cache import Cache
 from cache.connector import Connector
 from log.log import Log, Level
-from torrents import Torrents
+from torrents.torrents import Torrents
 from globals import setGlobal, getGlobal
 
 import argparse
