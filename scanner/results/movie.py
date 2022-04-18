@@ -15,3 +15,10 @@ class Movie(Result):
         Initialize the Movie result.
         """
         super(Type.MOVIE)
+
+    def __str__(self) -> str:
+        """
+        Get the results string representation.
+        """
+        return 'Title: ' + self.title \
+            + 'Date: ' + self.date

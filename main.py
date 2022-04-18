@@ -1,6 +1,7 @@
 from cache.cache import Cache
 from log.log import Log, Level
 from torrents.torrents import Torrents
+from scanner.scanners.opensubtitles import OpenSubtitles
 from globals import setGlobal, getGlobal
 
 import argparse
@@ -42,7 +43,7 @@ def parseArgs() -> dict:
 
 def initialize() -> None:
     """
-    Initialize the progams globals.
+    Initialize globals.
     """
     args = parseArgs()
 
@@ -62,3 +63,9 @@ if __name__ == '__main__':
 
     torrents = Torrents()
     print(torrents.listNewCompleted())
+
+    scanner = OpenSubtitles()
+    print([x.title for x in scanner.scan(
+        'The.Adam.Project.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HEVC-CMRG[TGx]')])
+    print([x.title for x in scanner.scan(
+        'Young.Sheldon.S05E17.1080p.WEB.h264-GOSSIP[eztv.re].mkv')])

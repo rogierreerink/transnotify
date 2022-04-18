@@ -8,13 +8,19 @@ class Series(Result):
     A TV Series result.
     """
     title: str = None
-    series: str = None
     season: int = None
     episode: int = None
-    date: datetime = None
 
     def __init__(self) -> None:
         """
         Initialize the TV Series result.
         """
         super(Type.SERIES)
+
+    def __str__(self) -> str:
+        """
+        Get the results string representation.
+        """
+        return 'Title: ' + self.title \
+            + 'Season: ' + self.season \
+            + 'Episode: ' + self.episode
