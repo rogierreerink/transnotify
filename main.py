@@ -18,11 +18,11 @@ def parseArgs() -> dict:
                         help='Path to the completed downloads.',
                         type=pathlib.Path)
 
-    parser.add_argument('-m', metavar='movies',  # required=True,
+    parser.add_argument('-m', metavar='movies', required=True,
                         help='Destination path for movies.',
                         type=pathlib.Path)
 
-    parser.add_argument('-s', metavar='series',  # required=True,
+    parser.add_argument('-s', metavar='series', required=True,
                         help='Destination path for tv series.',
                         type=pathlib.Path)
 
