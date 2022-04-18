@@ -1,1 +1,5 @@
 __pycache__
+
+test/torrents/completed/*
+test/var/log/transnotify/*
+test/var/cache/transnotify/*
