@@ -23,7 +23,7 @@ class Torrents:
         """
         return os.listdir(path)
 
-    def listNewCompleted(self) -> List[str]:
+    def listNewlyCompleted(self) -> List[str]:
         """
         Retrieve a list of the torrents that have completed since the last call
         to this method. Updates the completed torrents cache with the current
@@ -33,9 +33,15 @@ class Torrents:
         currentCompleted = self.__list(getGlobal('completed_dir'))
         newlyCompleted = [
             x for x in currentCompleted if not x in alreadyCompleted]
-        self.completedTorrentsCache.replace(currentCompleted)
 
         getGlobal('log').write(
             Level.DEBUG, f'\'{len(newlyCompleted)}\' new torrents found.')
 
         return newlyCompleted
+
+    def markHandled(self, filename: str) -> None:
+        """
+        Mark a torrent as handled, so that it won't show up on the next call
+        to `listNewlyCompleted`.
+        """
+        self.completedTorrentsCache.append([filename])

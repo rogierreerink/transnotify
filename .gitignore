@@ -1,6 +1,5 @@
 __pycache__
 
-test/torrents/completed/*
 test/media/movies/*
 test/media/series/*
 test/var/log/transnotify/*
