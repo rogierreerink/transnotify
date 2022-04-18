@@ -38,7 +38,7 @@ class Analyzer:
             scan.join()
 
         if not (len(scans) > 0 and len(scans[0].results) > 0):
-            return Analysis(filepath, Result(Type.NONE))
+            return Analysis(filepath, Result(None))
 
         # This is the hard part, selecting which result is the most relevant
         # and maybe check if any of the results are even relevant at all. Just
