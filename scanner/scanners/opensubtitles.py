@@ -4,6 +4,7 @@ from scanner.type import Type
 from log.log import Level
 from globals import getGlobal
 
+from posixpath import basename
 from typing import List
 from datetime import datetime
 import requests
@@ -20,12 +21,12 @@ class OpenSubtitles(Scanner):
     The OpenSubtitles scanner.
     """
 
-    def scan(self, filename: str) -> List[Result]:
+    def scan(filepath: str) -> List[Result]:
         """
         Scan OpenSubtitles.org for the given filename and return the results.
         """
-        url = API_URI + '/search/query-' + urllib.parse.quote(filename) \
-            + ''
+        url = API_URI + '/search/query-' + \
+            urllib.parse.quote(basename(filepath))
         req = requests.get(url, headers={
             'X-User-Agent': API_USERAGENT
         })

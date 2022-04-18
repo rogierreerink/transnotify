@@ -9,7 +9,7 @@ class Scanner(metaclass=ABCMeta):
     """
 
     @abstractmethod
-    def scan(self, filepath: str) -> List[Result]:
+    def scan(filepath: str) -> List[Result]:
         """
         Return the most relevant scan results.
         """

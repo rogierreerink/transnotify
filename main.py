@@ -2,6 +2,7 @@ from cache.cache import Cache
 from log.log import Log, Level
 from torrents.torrents import Torrents
 from scanner.scanners.opensubtitles import OpenSubtitles
+from analyzer.analyzer import Analyzer
 from globals import setGlobal, getGlobal
 
 import argparse
@@ -61,11 +62,15 @@ if __name__ == '__main__':
     """
     initialize()
 
-    torrents = Torrents()
-    print(torrents.listNewCompleted())
+    analyzer = Analyzer()
+    analyzer.registerScanner(OpenSubtitles)
 
-    scanner = OpenSubtitles()
-    print([x.title for x in scanner.scan(
-        'The.Adam.Project.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HEVC-CMRG[TGx]')])
-    print([x.title for x in scanner.scan(
-        'Young.Sheldon.S05E17.1080p.WEB.h264-GOSSIP[eztv.re].mkv')])
+    analysis = analyzer.analyze(
+        'The.Adam.Project.2022.1080p.NF.WEB-DL.DDP5.1.Atmos.HEVC-CMRG[TGx]')
+    print(analysis.result.t)
+    print(analysis.result.title)
+
+    analysis = analyzer.analyze(
+        'Young.Sheldon.S05E17.1080p.WEB.h264-GOSSIP[eztv.re].mkv')
+    print(analysis.result.t)
+    print(analysis.result.title)
