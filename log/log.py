@@ -27,7 +27,7 @@ class Log:
 
         if stats.st_uid != uid or stats.st_gid != gid:
             raise Exception(
-                '\'{}\' must be owned by the current process.'.format(path))
+                f'\'{path}\' must be owned by the current process.')
 
         self.path = path
 
