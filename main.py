@@ -1,5 +1,4 @@
 from cache.cache import Cache
-from cache.connector import Connector
 from log.log import Log, Level
 from torrents.torrents import Torrents
 from globals import setGlobal, getGlobal
@@ -61,6 +60,5 @@ if __name__ == '__main__':
     """
     initialize()
 
-    torrents = Torrents(
-        Connector(getGlobal('cache'), 'completed_torrents'), getGlobal('completed_dir'))
+    torrents = Torrents()
     print(torrents.listNewCompleted())

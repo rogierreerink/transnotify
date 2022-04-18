@@ -11,15 +11,12 @@ class Torrents:
     An interface to the torrent directories.
     """
 
-    def __init__(
-            self,
-            completedTorrentsCache: Connector,
-            completedTorrentsPath: str) -> None:
+    def __init__(self) -> None:
         """
         Initialize the torrents API.
         """
-        self.completedTorrentsCache = completedTorrentsCache
-        self.completedTorrentsPath = completedTorrentsPath
+        self.completedTorrentsCache = Connector(
+            getGlobal('cache'), 'completed_torrents')
 
     def __list(self, path) -> List[str]:
         """
@@ -33,7 +30,7 @@ class Torrents:
         list of completed torrents.
         """
         alreadyCompleted = self.completedTorrentsCache.retrieve()
-        currentCompleted = self.__list(self.completedTorrentsPath)
+        currentCompleted = self.__list(getGlobal('completed_dir'))
         newlyCompleted = [
             x for x in currentCompleted if not x in alreadyCompleted]
         self.completedTorrentsCache.replace(currentCompleted)
