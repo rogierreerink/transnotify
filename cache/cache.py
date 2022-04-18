@@ -1,9 +1,10 @@
+from typing import List
 import os
-import datetime
-import typing
 
 
 class Cache:
+    """
+    """
 
     def __init__(self, path: str) -> None:
         """
@@ -19,7 +20,7 @@ class Cache:
 
         self.path = path
 
-    def __write(self, name: str, data: typing.List[str], mode: str):
+    def __write(self, name: str, data: List[str], mode: str):
         """
         Write to the cache.
         """
@@ -32,7 +33,7 @@ class Cache:
                 if len(entry) > 0:
                     f.write(entry + '\n')
 
-    def __read(self, name: str) -> typing.List[str]:
+    def __read(self, name: str) -> List[str]:
         """
         Retrieve all entries from the cache.
         """
@@ -44,19 +45,19 @@ class Cache:
         except FileNotFoundError:
             return list()
 
-    def append(self, name: str, data: typing.List[str]) -> None:
+    def append(self, name: str, data: List[str]) -> None:
         """
         Append new entries to the cache.
         """
         self.__write(name, data, 'a')
 
-    def replace(self, name: str, data: typing.List[str]) -> None:
+    def replace(self, name: str, data: List[str]) -> None:
         """
         Replace the contents of the cache.
         """
         self.__write(name, data, 'w')
 
-    def retrieve(self, name: str) -> typing.List[str]:
+    def retrieve(self, name: str) -> List[str]:
         """
         Retrieve all entries from the cache.
         """

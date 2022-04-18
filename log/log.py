@@ -1,9 +1,9 @@
+from enum import Enum
+from datetime import datetime, date
 import os
-import enum
-import datetime
 
 
-class Level(enum.Enum):
+class Level(Enum):
     """
     Severity levels.
     """
@@ -40,8 +40,8 @@ class Log:
         if len(message) == 0:
             return
 
-        path = str(datetime.date.today()) + '.log'
+        path = str(date.today()) + '.log'
         path = os.path.join(self.path, path)
         with open(path, 'a', encoding='utf-8') as f:
-            f.write(str(datetime.datetime.now()) +
+            f.write(str(datetime.now()) +
                     ': ' + str(level) + ' ' + message + '\n')
