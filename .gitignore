@@ -4,3 +4,5 @@ test/media/movies/*
 test/media/series/*
 test/var/log/transnotify/*
 test/var/cache/transnotify/*
+
+config.sh
