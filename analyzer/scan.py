@@ -1,4 +1,3 @@
-from time import sleep
 from scanner.scanner import Scanner
 from scanner.result import Result
 

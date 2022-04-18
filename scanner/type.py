@@ -5,5 +5,6 @@ class Type(Enum):
     """
     Result types.
     """
-    MOVIE = 1
-    SERIES = 2
+    NONE = 1
+    MOVIE = 2
+    SERIES = 3

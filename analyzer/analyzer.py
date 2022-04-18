@@ -1,6 +1,8 @@
+from scanner.result import Result
 from scanner.scanner import Scanner
 from analyzer.analysis import Analysis
 from analyzer.scan import Scan
+from scanner.type import Type
 
 from threading import Thread
 
@@ -35,9 +37,10 @@ class Analyzer:
         for scan in scans:
             scan.join()
 
+        if not (len(scans) > 0 and len(scans[0].results) > 0):
+            return Analysis(filepath, Result(Type.NONE))
+
         # This is the hard part, selecting which result is the most relevant
         # and maybe check if any of the results are even relevant at all. Just
         # return the first result from the first scan for now.
-        result = scans[0].results[0]
-
-        return Analysis(filepath, result)
+        return Analysis(filepath, scans[0].results[0])
